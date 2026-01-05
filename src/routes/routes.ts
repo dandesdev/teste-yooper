@@ -10,6 +10,7 @@ import {
   investmentGoalListResponseSchema,
   errorResponseSchema,
 } from "../schema/schema.js";
+import z from "zod";
 
 const repository = new InvestmentGoalRepository();
 
@@ -118,15 +119,15 @@ export async function investmentGoalsRoutes(app: FastifyInstance) {
   );
 
   server.delete(
-    "/teste-yooper/:id",
+    "/investment-goals/:id",
     {
       schema: {
         summary: "Remover meta de investimento",
-        description: "Remove uma meta de investimento",
+        description: "Remove uma meta",
         tags: ["Metas de Investimento"],
         params: investmentGoalParamsSchema,
         response: {
-          204: { type: "null", description: "Meta removida com sucesso" },
+          204: z.null().describe("Meta removida com sucesso"),
           404: errorResponseSchema,
         },
       },
@@ -138,7 +139,7 @@ export async function investmentGoalsRoutes(app: FastifyInstance) {
         return reply.status(404).send({
           statusCode: 404,
           error: "Not Found",
-          message: `Meta de investimento com ID ${request.params.id} não encontrada`,
+          message: `Meta com ID ${request.params.id} não encontrada`,
         });
       }
 

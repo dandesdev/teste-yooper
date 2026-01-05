@@ -66,11 +66,9 @@ export class InvestmentGoalRepository {
     id: number,
     data: InvestmentGoalUpdate
   ): Promise<InvestmentGoalResponse | null> {
-    // Primeiro, busca o registro atual
     const current = await this.findById(id);
     if (!current) return null;
 
-    // Mescla os dados
     const merged = {
       nome: data.nome ?? current.nome,
       meses: data.meses ?? current.meses,

@@ -22,7 +22,7 @@ export async function initializeDatabase(): Promise<void> {
       )
     `);
 
-    console.log("✅ Database initialized successfully");
+    console.log("Database initialized successfully");
   } finally {
     client.release();
   }

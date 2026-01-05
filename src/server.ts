@@ -23,7 +23,7 @@ async function bootstrap() {
       info: {
         title: "API de Investimento",
         description: "API RESTful para gerenciar metas de investimento",
-        version:aa "1.0.0",
+        version: "1.0.0",
       },
       servers: [
         {
@@ -78,8 +78,8 @@ async function bootstrap() {
   const port = Number(process.env.PORT) || 3000;
   await app.listen({ port, host: "0.0.0.0" });
 
-  console.log(`🚀 Server running at http://localhost:${port}`);
-  console.log(`📚 Docs available at http://localhost:${port}/docs`);
+  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Docs available at http://localhost:${port}/docs`);
 }
 
 bootstrap().catch(console.error);
